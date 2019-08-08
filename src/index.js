@@ -18,19 +18,33 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
-// import Home from "./home";
-// import List from "./list";
+// import axios from "axios";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import Home from "./home";
+import List from "./list";
 
 class Index extends Component {
-  componentDidMount() {
-    console.log("mount");
-  }
+//   componentDidMount() {
+//     axios
+//       .get("/api/info.json")
+//       .then(res => {
+//         console.log(res);
+//       })
+//       .catch(error => {
+//         console.log("error:" + error);
+//       });
+//   }
 
   render() {
-    return <div>hello world</div>;
+    return (
+        <div>
+            <Router>
+                <Route path="/" exact component={Home} />
+                <Route path="/list" component={List} />
+            </Router>
+        </div>
+    )
   }
 }
 
 ReactDOM.render(<Index />, document.getElementById("root"));
-
