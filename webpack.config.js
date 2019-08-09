@@ -5,14 +5,14 @@ const cleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   devtool: "cheap-module-eval-source-map",
   devServer: {
     // overlay: true,
-    overlay: {
-      warnings: true,
-      errors: true
-    },
+    // overlay: {
+    //   warnings: true,
+    //   errors: true
+    // },
     contentBase: "./dist",
     open: true,
     // port: 8082,
@@ -28,7 +28,7 @@ module.exports = {
     //     }
     //   }
     // ]
-    historyApiFallback: true,
+    historyApiFallback: true
     // proxy: {
     //   index: "",
     //   "/": {
@@ -67,7 +67,7 @@ module.exports = {
       // {
       //   enforce: 'pre',
       //   test: /\.js$/,
-      //   exclude: /node_modules/, 
+      //   exclude: /node_modules/,
       //   loader: "eslint-loader",
       //   options: {
       //     fix:true,
@@ -77,7 +77,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [      
+        use: [
           {
             loader: "babel-loader",
             options: {
@@ -93,12 +93,16 @@ module.exports = {
             }
           }
         ]
-      }
+      },
       // {
       //     test: /\.tsx?$/, //?:0或1个  即.ts/.tsx
       //     use: 'ts-loader',
       //     exclude: /node_modules/
       // }
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
     ]
   },
   plugins: [
@@ -111,5 +115,8 @@ module.exports = {
     //     clientsClaim: true,
     //     skipWaiting: true
     //   })
-  ]
+  ],
+  optimization: {
+    usedExports: true
+  }
 };
