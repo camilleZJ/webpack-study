@@ -10,7 +10,8 @@
     "http": "http-server dist",
     "devServer": "webpack-dev-server",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
-    "prod": "webpack --config ./build/webpack.prod.js"
+    "prod": "webpack --config ./build/webpack.prod.js",
+    "env": "webpack --env.production --config ./build_ENV/webpack.common.js"    
   },
   "sideEffects": [
     "*.css"
